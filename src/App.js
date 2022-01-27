@@ -6,14 +6,23 @@ const App = () => {
     // The variable setCounter is assigned to a function that will be used to modify the state
     const [ counter, setCounter ] = useState(0);
 
-    setTimeout(
-        // React re-renders the component which means that the function body of the component function gets re-executed
-        () => setCounter(counter + 1),
-        1000
-    )
+   const handleClick = () => {
+       console.log('click click!');
+   }
+
+   const increaseByOne = () => setCounter(counter + 1);
+   const setToZero = () => setCounter(0);
 
     return (
-        <div>{counter}</div>
+        <div>
+            <div>{counter}</div>
+            <button onClick={increaseByOne}>
+                plus
+            </button>
+            <button onClick={setToZero}>
+                reset
+            </button>
+        </div>
     )
 }
 
