@@ -1,33 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react'
 
-const Hello = ({name, age}) => {
+const App = () => {
+    // Add state to the component and renders it initialized with the value of zero
+    // The counter variable is assigned the initial value of state which is zero
+    // The variable setCounter is assigned to a function that will be used to modify the state
+    const [ counter, setCounter ] = useState(0);
 
-    const bornYear = () => new Date().getFullYear() - age;
+    setTimeout(
+        // React re-renders the component which means that the function body of the component function gets re-executed
+        () => setCounter(counter + 1),
+        1000
+    )
 
-  return (
-      <div>
-        <p>
-          Hello {name}, you are {age} years old
-        </p>
-          <p>You were thus probably born in {bornYear()}</p>
-      </div>
-  )
+    return (
+        <div>{counter}</div>
+    )
 }
 
-const App = (props) => {
-  const {counter} = props;
-  const name = 'Peter';
-  const age = 10;
-
-  return (
-      <div>
-          <h1>Greetings</h1>
-          <Hello name="Maya" age={26 + 10} />
-          <Hello name={name} age={age} />
-          <h1>Counter Stuff</h1>
-          <p>{counter}</p>
-      </div>
-  )
-}
-
-export default App;
+export default App
